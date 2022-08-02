@@ -11,13 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-    MemberService memberService;
-
-    @Autowired // DI의존주입
-    public HelloController(MemberService memberService){
-        this.memberService = memberService;
-    }
-
     @GetMapping("hello")
     public String hello(Model model){
         model.addAttribute("data","hello!!");
