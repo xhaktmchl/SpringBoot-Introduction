@@ -10,7 +10,12 @@ import java.util.Optional;
 
 public class MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository(); //TODO: 인터페이스를 객체로 받아? 왜?
+    private final MemberRepository memberRepository;//TODO: 인터페이스를 객체로 받아? 왜?
+
+    //DI 의존주입
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     //회원가입
     public Long join(Member member){
@@ -28,12 +33,12 @@ public class MemberService {
     }
 
     //전체회원 조회
-    private List<Member> findMembers(){
+    public List<Member> findMembers(){
         return memberRepository.findAll();
     }
 
     //회원 id로 단일조회
-    private Optional<Member> findOne(Long memberId){
+    public Optional<Member> findOne(Long memberId){
         return memberRepository.findById(memberId);
     }
 }
