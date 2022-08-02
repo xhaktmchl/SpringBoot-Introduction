@@ -1,5 +1,7 @@
 package hello.springintroduction.controller;
 
+import hello.springintroduction.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
+
+    MemberService memberService;
+
+    @Autowired // DI의존주입
+    public HelloController(MemberService memberService){
+        this.memberService = memberService;
+    }
 
     @GetMapping("hello")
     public String hello(Model model){
