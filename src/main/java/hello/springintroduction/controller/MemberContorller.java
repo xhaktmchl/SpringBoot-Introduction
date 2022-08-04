@@ -18,6 +18,7 @@ public class MemberContorller {
     @Autowired // DI의존주입
     public MemberContorller(MemberService memberService){
         this.memberService = memberService;
+        System.out.println("memberService : " + memberService.getClass()); // 멤버서비스가 AOP프록시 객체인지 확인
     }
 
     @GetMapping("/members/new")
